@@ -1,5 +1,7 @@
 # archery-jdbc-driver
 
+[Archery: SQL 审核查询平台](https://github.com/hhyo/archery)
+
 只读 JDBC 驱动：把 JDBC 的 SELECT 调用翻译成对 Archery 平台 HTTP 接口的调用。
 使 BI 工具（DataGrip / DBeaver / FineBI / Metabase / 自研 Java 应用等）通过标准 JDBC
 访问 Archery 管控的数据源，同时完整复用 Archery 的**权限校验、查询审计、数据脱敏、超时保护**。
