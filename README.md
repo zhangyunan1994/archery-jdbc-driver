@@ -1,4 +1,4 @@
-# archery-jdbc-mc
+# archery-jdbc-driver
 
 只读 JDBC 驱动：把 JDBC 的 SELECT 调用翻译成对 Archery 平台 HTTP 接口的调用。
 使 BI 工具（DataGrip / DBeaver / FineBI / Metabase / 自研 Java 应用等）通过标准 JDBC
@@ -15,7 +15,7 @@
 JDBC 客户端 (BI 工具 / Java 应用)
    │  java.sql API
    ▼
-archery-jdbc-mc 驱动（本模块，Java 8 兼容）
+archery-jdbc-driver 驱动（本模块，Java 8 兼容）
    │  GET  /login/          预取 csrftoken cookie
    │  POST /authenticate/   平台登录（session + CSRF）
    │  POST /query/          instance_name / db_name / sql_content / limit_num
@@ -39,12 +39,12 @@ com.archery.jdbc.internal 连接/语句/结果集/HTTP 会话/类型映射等实
 ## 构建
 
 ```bash
-mvn -f archery-jdbc-mc/pom.xml package
+mvn package
 # 产物：
-#   target/archery-jdbc-mc-1.0.0-jar-with-dependencies.jar  <- 推荐使用（内置 gson，自包含）
-#   target/archery-jdbc-mc-1.0.0.jar                        # 纯 jar，需自行提供 gson 依赖
+#   target/archery-jdbc-driver-1.0.0-jar-with-dependencies.jar  <- 推荐使用（内置 gson，自包含）
+#   target/archery-jdbc-driver-1.0.0.jar                        # 纯 jar，需自行提供 gson 依赖
 
-mvn -f archery-jdbc-mc/pom.xml test   # 45 个单元测试
+mvn test   # 45 个单元测试
 ```
 
 ## 快速开始
@@ -177,7 +177,7 @@ DatabaseMetaData.getPrimaryKeys(...)         → SHOW FULL COLUMNS 中 Key='PRI'
 ## 在 DataGrip 中接入
 
 1. **Database → Drivers（驱动管理器）→ "+" → Generic**；
-2. **Driver Files**：添加 `archery-jdbc-mc-1.0.0-jar-with-dependencies.jar`
+2. **Driver Files**：添加 `archery-jdbc-driver-1.0.0-jar-with-dependencies.jar`
    （⚠️ 不要用 66KB 纯 jar，缺 gson；不要混入其他 archery-jdbc 变体的 jar）；
 3. **Driver Class**：点 Find Class，选择 `com.archery.jdbc.driver.ArcheryDriver`；
 4. **URL templates**：`jdbc:archery://{host::String}:{port::int}/{instance::String}/{db::String}`；
