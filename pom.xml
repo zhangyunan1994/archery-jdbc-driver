@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.archery</groupId>
-    <artifactId>archery-jdbc-mc</artifactId>
+    <artifactId>archery-jdbc-driver</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
